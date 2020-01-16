@@ -1,7 +1,0 @@
-gcc -o sw -lm SW_Potts2D.c
-
-qsub T*0.pbs
-# ./sw infile0* 0
-qsub T*1.pbs
-# ./sw infile1* 1
-
