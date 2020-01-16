@@ -1,0 +1,12 @@
+T_Ising:
+2.2692
+Q_Potts:
+2
+Dimension:
+2
+LinearSize:
+1000
+MCTOT:
+100
+BoundaryCondition:
+pBC
