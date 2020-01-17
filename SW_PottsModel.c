@@ -113,7 +113,6 @@ int main(int argc, char **argv)
       m = magnet(); fprintf(m_file, "%d\n", m);
       fclose(m_file);
 
-      // slice is just the row in the middle of 2D lattice, or the plane in the middle of 3D lattice
       if(L == 1000){
          slices_file = fopen(slices_fname, "a"); assert(slices_file != NULL);
          if(D == 2)
@@ -126,20 +125,19 @@ int main(int argc, char **argv)
          fclose(slices_file);
       }
 
-      // cube is the central part of the whole lattice
-      // if(L == 1000){
-      //    cube_file = fopen(cube_fname, "a"); assert(cube_file != NULL);
-      //    if(D == 3)
-      //       for(ii = (int)(L/2-50); ii < (int)(L/2+50); ++ii)
-      //          for(jj = (int)(L/2-50); jj < (int)(L/2+50); ++jj)
-      //             for(kk = (int)(L/2-50); kk < (int)(L/2+50); ++kk)
-      //                fprintf(cube_file, " %d", s[ii*L*L+jj*L+kk]);
-      //    else if(D == 2)
-      //          for(jj = (int)(L/2-50); jj < (int)(L/2+50); ++jj)
-      //             for(kk = (int)(L/2-50); kk < (int)(L/2+50); ++kk)
-      //                fprintf(cube_file, " %d", s[jj*L+kk]);
-      //    fprintf(cube_file, "\n");
-      //    fclose(cube_file);
+      if(L == 1000){
+         cube_file = fopen(cube_fname, "a"); assert(cube_file != NULL);
+         if(D == 3)
+            for(ii = (int)(L/2-50); ii < (int)(L/2+50); ++ii)
+               for(jj = (int)(L/2-50); jj < (int)(L/2+50); ++jj)
+                  for(kk = (int)(L/2-50); kk < (int)(L/2+50); ++kk)
+                     fprintf(cube_file, " %d", s[ii*L*L+jj*L+kk]);
+         else if(D == 2)
+               for(jj = (int)(L/2-50); jj < (int)(L/2+50); ++jj)
+                  for(kk = (int)(L/2-50); kk < (int)(L/2+50); ++kk)
+                     fprintf(cube_file, " %d", s[jj*L+kk]);
+         fprintf(cube_file, "\n");
+         fclose(cube_file);
       }
 
       if(mc%100 == 0){
